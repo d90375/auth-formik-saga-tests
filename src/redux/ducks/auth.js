@@ -12,6 +12,7 @@ const prefix = `${appName}/${moduleName}`;
 export const SIGN_UP_PENDING = `${prefix}/SIGN_UP_PENDING`;
 export const SIGN_UP_FULFILLED = `${prefix}/SIGN_UP_FULFILLED`;
 export const SIGN_UP_REJECTED = `${prefix}/SIGN_UP_REJECTED`;
+export const AUTH_CHANGE = `${prefix}/AUTH_CHANGE`;
 
 /**
  * Reducer
@@ -26,6 +27,7 @@ export default function reducer(state = new ReducerRecord(), action) {
   const { type, payload, error } = action;
 
   switch (type) {
+    case AUTH_CHANGE:
     case SIGN_UP_PENDING:
       return state.set("loading", true);
 
@@ -81,4 +83,17 @@ export const signUp = (email, password) => async (dispatch) => {
       error,
     });
   }
+};
+
+/**
+ * Init Logic
+ */
+
+export const init = (store) => {
+  apiService.onAuthChange((user) => {
+    store.dispatch({
+      type: AUTH_CHANGE,
+      payload: { user },
+    });
+  });
 };

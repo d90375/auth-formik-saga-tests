@@ -4,9 +4,12 @@ import logger from "redux-logger";
 import reducer from "./reducer";
 import history from "../history";
 import thunk from "redux-thunk";
+import init from "./init";
 
-export const initStore = () => {
-  const enhancer = applyMiddleware(thunk, routerMiddleware(history), logger);
+const enhancer = applyMiddleware(thunk, routerMiddleware(history), logger);
 
-  return createStore(reducer, enhancer);
-};
+const store = createStore(reducer, enhancer);
+
+init(store);
+
+export default store;
