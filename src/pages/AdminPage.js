@@ -1,12 +1,18 @@
 import React from "react";
 import { NavLink, Route } from "react-router-dom";
+import { useAuthorized } from "../redux/ducks/auth";
 
 const AdminPage = () => {
+  const isAuthorized = useAuthorized();
+
+  if (!isAuthorized) {
+    return <h1>Not authorized</h1>;
+  }
   return (
     <div>
       <h1>Admin</h1>
-      <NavLink to="/admin/new-event">Add Event</NavLink>
-      <Route path="/admin/new-event" />
+      <NavLink to="/admin/new-company">Add Company</NavLink>
+      <Route path="/admin/new-company" />
     </div>
   );
 };
