@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
-import { signUp } from "../../redux/ducks/auth";
+import { signUp } from "../../../redux/ducks/auth";
 
 const SingUpForm = () => {
   const dispatch = useDispatch();

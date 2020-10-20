@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Route } from "react-router-dom";
-import { SignUpForm } from "../components/Sign-up-form";
-import { SignInForm } from "../components/Sign-in-form";
+import { SignUpForm } from "../components/auth/SignUpForm";
+import { SignInForm } from "../components/auth/SignInForm";
 
 const AuthPage = () => {
   return (
